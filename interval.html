@@ -4,36 +4,46 @@
   <!-- EMPTY HEAD is a relaxed head :D -->
 </head>
 
-<body>
+<body onload="init()">
+  <div id="type-area" class="form-group">
+    <h4>Types of Exercise</h4>
+    <textarea id="workout-types" class="form-control">regular pushup, wide pushup, triceps pushup, squat, sit up, jumping jack, burpy
+    </textarea>
+    <button id="copy" onClick="javascript:updateExercises()">
+    Update
+    </button>
+    <button id="copy" onClick="javascript:initExercies()">
+    Reset
+    </button>
+  </div>
   <table id="input" class="table">
     <thead>
       <tr>
-        <th>Number of sets</th>
+        <!-- <th>Number of sets</th> -->
         <th>Exercise (sec)</th>
         <th>Relief period (sec)</th>
+        <th>Target repetitions</th>
         <th>Type</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><input type="number" min=0 value="1" maxlength="2" size="2" id="NSET"/></td>
-
-        <td><input type="number" min=0 value="15" maxlength="2" size="2" id="WORK_INTERVAL"/></td>
-
+        <!-- <td><input type="number" min=0 value="1" maxlength="2" size="2" id="NSET"/></td> -->
+        <td><input type="number" min=0 value="30" maxlength="2" size="2" id="WORK_INTERVAL"/></td>
         <td><input type="number" min=0 value="15" maxlength="2" size="2" id="REST_INTERVAL"/></td>
+        <td><input type="number" min=0 value="15" maxlength="2" size="2"/></td>
         <td>
-          <select name="select">
-            <option value="value1">Default</option>
+          <select class="exerciseTypes" name="select" style="width:150px;">
+            <option>regular pushup</option>
           </select>
         </td>
         <td>
-          <button id="copy" onClick="javascript:copyExercise(event)"
-          >
+          <button id="copy" onClick="javascript:copyExercise(event)">
           +
         </button>
       </td>
       <td>
-        <button id="copy" onClick="javascript:removeExercise(event)">
+        <button id="remove" onClick="javascript:removeExercise(event)">
           -
         </button>
       </td>
@@ -41,17 +51,17 @@
 
     <tr>
       <td>
-        <button type="submit" class="btn btn-default" onClick="javascript:work_hard()">Work bitch</button>
+        <button id="sweat" type="submit" class="btn btn-default" onClick="javascript:work_hard()">Sweat HARD!</button>
       </td>
       <td>
-        <span id="play" style="display:none" class="glyphicon glyphicon-play" aria-hidden="true"
+        <span id="play" style="display:none; cursor: pointer;" class="glyphicon glyphicon-play" aria-hidden="true"
         onClick="javascript:resume()"></span>
       </td>
       <td>
-        <span id="pause" style="display:none" class="glyphicon glyphicon-pause" aria-hidden="true"  onClick="javascript:pause()"></span>
+        <span id="pause" style="display:none; cursor: pointer;" class="glyphicon glyphicon-pause" aria-hidden="true"  onClick="javascript:pause()"></span>
       </td>
       <td>
-        <span id="stop" style="display:none" class="glyphicon glyphicon-stop" aria-hidden="true"></span>
+        <span id="stop" style="display:none; cursor: pointer;" class="glyphicon glyphicon-stop" aria-hidden="true" onClick="javascript:stop()"></span>
       </td>
     </tr>
   </tbody>
